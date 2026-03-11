@@ -1,0 +1,560 @@
+/* ============================================================
+   PROFILSITE — FEUILLE DE STYLE PERSONNALISÉE
+   Complète Bootstrap 5 avec les styles propres au projet
+   ============================================================ */
+
+/* ---- Variables globales ---- */
+:root {
+    --ps-primary:    #6C63FF;
+    --ps-primary-d:  #5A52E0;
+    --ps-accent:     #FF6584;
+    --ps-light-bg:   #F4F6FF;
+    --ps-border:     rgba(108, 99, 255, 0.15);
+    --ps-radius:     14px;
+    --ps-shadow:     0 8px 32px rgba(108, 99, 255, 0.12);
+    --font-display:  'Syne', sans-serif;
+    --font-body:     'DM Sans', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #1E1B4B;
+}
+
+.font-display { font-family: var(--font-display); }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+.fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+#navbar {
+    background: rgba(255, 255, 255, 0.93);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--ps-border);
+    transition: box-shadow 0.3s;
+}
+#navbar.scrolled { box-shadow: var(--ps-shadow); }
+
+.navbar-brand {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #1E1B4B !important;
+}
+.nav-link {
+    color: #6B7280 !important;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.nav-link:hover { color: var(--ps-primary) !important; }
+
+/* ============================================================
+   SECTION HÉRO
+   ============================================================ */
+.hero-section {
+    min-height: 100vh;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    background:
+        radial-gradient(ellipse at 15% 60%, rgba(108, 99, 255, 0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 20%, rgba(255, 101, 132, 0.05) 0%, transparent 50%),
+        #ffffff;
+}
+
+.hero-section h1 em {
+    font-style: normal;
+    color: var(--ps-primary);
+}
+
+/* Badge haut de page */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 1rem;
+    background: rgba(108, 99, 255, 0.08);
+    border: 1px solid rgba(108, 99, 255, 0.22);
+    border-radius: 50px;
+    font-size: 0.84rem;
+    color: var(--ps-primary);
+    font-weight: 500;
+}
+
+/* Maquette flottante dans le héro */
+.mockup-card {
+    width: 310px;
+    background: #fff;
+    border-radius: 18px;
+    border: 1px solid var(--ps-border);
+    overflow: hidden;
+    animation: floatY 4s ease-in-out infinite;
+    box-shadow: var(--ps-shadow);
+}
+@keyframes floatY {
+    0%, 100% { transform: translateY(0);     }
+    50%       { transform: translateY(-14px); }
+}
+
+.mockup-topbar {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    background: #F4F6FF;
+    border-bottom: 1px solid var(--ps-border);
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot-red    { background: #FF5F57; }
+.dot-yellow { background: #FFBD2E; margin: 0 4px; }
+.dot-green  { background: #28CA41; }
+
+.mockup-url {
+    flex: 1;
+    margin-left: 0.6rem;
+    background: #fff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.7rem;
+    color: #9CA3AF;
+    text-align: center;
+}
+
+.mockup-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ps-primary), var(--ps-accent));
+    margin: 0 auto;
+}
+
+.mockup-bar {
+    height: 9px;
+    border-radius: 5px;
+    background: #EEF2FF;
+}
+
+/* ============================================================
+   SECTIONS COMMUNES
+   ============================================================ */
+.py-section    { padding: 5rem 0; }
+.bg-light-ps   { background: var(--ps-light-bg); }
+
+.section-tag {
+    display: inline-block;
+    padding: 0.28rem 1rem;
+    background: rgba(108, 99, 255, 0.08);
+    color: var(--ps-primary);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+/* ============================================================
+   FONCTIONNALITÉS
+   ============================================================ */
+.feature-card {
+    padding: 1.8rem;
+    border-radius: var(--ps-radius);
+    background: #fff;
+    border: 1px solid rgba(108, 99, 255, 0.1);
+    box-shadow: 0 2px 12px rgba(108, 99, 255, 0.05);
+    transition: all 0.3s ease;
+}
+.feature-card:hover {
+    border-color: rgba(108, 99, 255, 0.3);
+    transform: translateY(-5px);
+    box-shadow: var(--ps-shadow);
+}
+.feature-icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* ============================================================
+   TEMPLATES
+   ============================================================ */
+.template-card {
+    border-radius: var(--ps-radius);
+    overflow: hidden;
+    border: 2px solid rgba(108, 99, 255, 0.12);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.template-card:hover,
+.template-card.active {
+    border-color: var(--ps-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.12);
+}
+
+.tpl-preview {
+    height: 155px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1.5rem;
+}
+.tpl-dot  { width: 40px; height: 40px; border-radius: 50%; }
+.tpl-line { height: 8px; border-radius: 4px; width: 100%; }
+
+.template-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================================
+   ÉTAPES
+   ============================================================ */
+.step-card {
+    padding: 2rem 1.5rem;
+    border-radius: var(--ps-radius);
+    background: #fff;
+    border: 1px solid rgba(108, 99, 255, 0.1);
+    box-shadow: 0 2px 12px rgba(108, 99, 255, 0.05);
+    transition: transform 0.3s;
+    text-align: center;
+}
+.step-card:hover { transform: translateY(-4px); }
+
+.step-number {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--ps-primary);
+    opacity: 0.2;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+}
+.step-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-card {
+    background: #fff;
+    border-radius: var(--ps-radius);
+    border: 1px solid var(--ps-border);
+    box-shadow: var(--ps-shadow);
+}
+
+/* ============================================================
+   BOOTSTRAP OVERRIDES
+   ============================================================ */
+.btn-primary {
+    background-color: var(--ps-primary);
+    border-color: var(--ps-primary);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--ps-primary-d);
+    border-color: var(--ps-primary-d);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.35);
+}
+
+.btn-outline-primary {
+    border-color: var(--ps-primary);
+    color: var(--ps-primary);
+}
+.btn-outline-primary:hover {
+    background-color: var(--ps-primary);
+    border-color: var(--ps-primary);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--ps-primary);
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.12);
+}
+
+/* ============================================================
+   PAGES AUTH (LOGIN / REGISTER)
+   ============================================================ */
+.auth-body {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(108, 99, 255, 0.07) 0%, transparent 50%),
+        var(--ps-light-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.auth-wrapper { width: 100%; max-width: 440px; }
+
+.auth-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid var(--ps-border);
+    box-shadow: var(--ps-shadow);
+}
+
+/* ============================================================
+   DASHBOARD — BARRE LATÉRALE
+   ============================================================ */
+.sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 260px;
+    background: #fff;
+    border-right: 1px solid var(--ps-border);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    z-index: 300;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-brand {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--ps-border);
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 10px;
+    color: #6B7280;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-bottom: 0.2rem;
+}
+.sidebar-link i { font-size: 1.1rem; width: 20px; text-align: center; }
+.sidebar-link:hover,
+.sidebar-link.active {
+    background: rgba(108, 99, 255, 0.07);
+    color: var(--ps-primary);
+}
+
+.sidebar-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ps-primary), var(--ps-accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #fff;
+    font-size: 0.9rem;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.sidebar-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ============================================================
+   DASHBOARD — CONTENU PRINCIPAL
+   ============================================================ */
+.dashboard-main {
+    margin-left: 260px;
+    min-height: 100vh;
+    padding: 2rem;
+    background: var(--ps-light-bg);
+}
+
+.panel {
+    background: #fff;
+    border-radius: var(--ps-radius);
+    padding: 1.75rem;
+    border: 1px solid var(--ps-border);
+    box-shadow: 0 2px 12px rgba(108, 99, 255, 0.05);
+    margin-bottom: 1.5rem;
+}
+
+/* Avatar large (formulaire profil) */
+.avatar-lg {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--ps-primary), var(--ps-accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 3px solid rgba(108, 99, 255, 0.2);
+}
+.avatar-lg img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Sélecteur de thème */
+.theme-label { cursor: pointer; }
+
+.theme-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background: #F4F6FF;
+    transition: all 0.2s;
+}
+.theme-box:hover,
+.theme-box.selected {
+    border-color: var(--ps-primary);
+    background: rgba(108, 99, 255, 0.05);
+}
+.theme-dot-sm {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+/* Projets */
+.project-item {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--ps-border);
+    background: #FAFBFF;
+    transition: background 0.2s;
+    margin-bottom: 0.7rem;
+}
+.project-item:hover { background: rgba(108, 99, 255, 0.03); }
+
+/* ============================================================
+   MINI-SITE PUBLIC — THÈMES
+   ============================================================ */
+
+/* Thème Sombre */
+.theme-dark { background: #0D0D1A; color: #E8E8F0; }
+.theme-dark .ms-card  { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+.theme-dark .ms-badge { background: rgba(108,99,255,0.2); color: #A5B4FC; border: 1px solid rgba(108,99,255,0.3); }
+
+/* Thème Clair */
+.theme-light { background: #fff; color: #1E1B4B; }
+.theme-light .ms-card  { background: #F4F6FF; border: 1px solid rgba(108,99,255,0.1); }
+.theme-light .ms-badge { background: rgba(108,99,255,0.08); color: #4F46E5; border: 1px solid rgba(108,99,255,0.2); }
+
+/* Thème Dégradé */
+.theme-gradient { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); color: #fff; }
+.theme-gradient .ms-card  { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+.theme-gradient .ms-badge { background: rgba(255,255,255,0.15); color: #E0E7FF; border: 1px solid rgba(255,255,255,0.2); }
+
+/* Thème Minimal */
+.theme-minimal { background: #FAFAFA; color: #333; }
+.theme-minimal .ms-card  { background: #fff; border: 1px solid #E5E7EB; }
+.theme-minimal .ms-badge { background: #F3F4F6; color: #374151; border: 1px solid #D1D5DB; }
+
+/* Éléments communs mini-site */
+.ms-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6C63FF, #FF6584);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #fff;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 4px solid rgba(255,255,255,0.15);
+    transition: transform 0.3s;
+}
+.ms-avatar:hover { transform: scale(1.06); }
+.ms-avatar img   { width: 100%; height: 100%; object-fit: cover; }
+
+.ms-badge {
+    display: inline-block;
+    padding: 0.28rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+.ms-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.25s;
+}
+.ms-card:hover { transform: translateY(-4px); }
+
+.ms-project-thumb {
+    height: 130px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(108,99,255,0.25), rgba(255,101,132,0.25));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.ms-footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem 0;
+    text-align: center;
+    opacity: 0.45;
+    font-size: 0.82rem;
+}
+.theme-light .ms-footer,
+.theme-minimal .ms-footer {
+    border-top-color: rgba(0,0,0,0.08);
+}
+
+/* ============================================================
+   RESPONSIVE MOBILE
+   ============================================================ */
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+        box-shadow: 4px 0 20px rgba(0,0,0,0.12);
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .dashboard-main {
+        margin-left: 0;
+        padding: 1.25rem;
+        padding-top: 4rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .auth-card { padding: 1.75rem 1.25rem; }
+    .panel     { padding: 1.25rem; }
+    .hero-section h1 { font-size: 2.2rem; }
+}
