@@ -18,8 +18,13 @@
 
 body {
     font-family: var(--font-body);
-    color: #1E1B4B;
+    color: #ff5100;
+     font-family: 'DM Sans', sans-serif;
+     /* Taille globale du texte */
+    font-size: 25px; /* valeur par défaut 16px → 18px plus grand */
+    
 }
+
 
 .font-display { font-family: var(--font-display); }
 

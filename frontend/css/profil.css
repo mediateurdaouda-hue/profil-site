@@ -73,11 +73,12 @@ html {
 body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
     line-height: 1.6;
     transition: background-color 0.3s, color 0.3s;
+    font-family: 'Roboto', sans-serif;
 }
+
 
 /* Classes utilitaires */
 .accent       { color: var(--accent); }
@@ -351,7 +352,7 @@ body {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #22c55e;
+    background: #f3f5f4;
     animation: blink 2s infinite;
     flex-shrink: 0;
 }
