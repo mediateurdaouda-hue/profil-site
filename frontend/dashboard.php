@@ -130,22 +130,50 @@ $h = fn($s) => htmlspecialchars((string)($s ?? ''), ENT_QUOTES, 'UTF-8');
     <?php endif; ?>
 
     <!-- URL mini-site -->
-    <div class="panel d-flex align-items-center gap-3 flex-wrap mb-4">
-        <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center flex-shrink-0"
-             style="width:44px;height:44px;">
-            <i class="bi bi-link-45deg text-primary fs-5"></i>
+    <?php
+    $extensions      = ['.com', '.bf', '.net', '.org'];
+    $extChoisie      = $_SESSION['extension'] ?? '.com';
+    $nomDomaine      = 'www.' . strtolower(str_replace(' ', '', $username)) . $extChoisie;
+    $minisiteAffiche = $nomDomaine;
+    ?>
+    <div class="panel mb-4">
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+            <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center flex-shrink-0"
+                 style="width:44px;height:44px;">
+                <i class="bi bi-link-45deg text-primary fs-5"></i>
+            </div>
+            <div class="flex-grow-1 overflow-hidden">
+                <div class="text-muted small mb-1">Votre mini-site personnel :</div>
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <!-- Nom de domaine affiché -->
+                    <span class="fw-semibold text-primary" id="urlAffichee">
+                        <?= $h($minisiteAffiche) ?>
+                    </span>
+                    <!-- Menu déroulant extension -->
+                    <form method="POST" action="<?= APP_URL ?>/backend/dashboard.php" class="d-inline mb-0">
+                        <input type="hidden" name="action" value="extension"/>
+                        <select name="extension" class="form-select form-select-sm d-inline-block w-auto"
+                                onchange="this.form.submit()" style="min-width:90px;">
+                            <?php foreach ($extensions as $ext): ?>
+                                <option value="<?= $h($ext) ?>"
+                                    <?= $extChoisie === $ext ? 'selected' : '' ?>>
+                                    <?= $h($ext) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </form>
+                </div>
+                <!-- Lien réel localhost -->
+                <a href="<?= $h($minisite) ?>" target="_blank"
+                   class="text-muted small text-decoration-none">
+                    <i class="bi bi-box-arrow-up-right me-1"></i>Ouvrir le mini-site
+                </a>
+            </div>
+            <button id="btnCopy" class="btn btn-outline-primary btn-sm flex-shrink-0"
+                    onclick="copyUrl('<?= $h($minisiteAffiche) ?>')">
+                <i class="bi bi-clipboard me-1"></i>Copier
+            </button>
         </div>
-        <div class="flex-grow-1 overflow-hidden">
-            <div class="text-muted small mb-1">Votre mini-site personnel :</div>
-            <a href="<?= $h($minisite) ?>" target="_blank"
-               class="fw-semibold text-primary text-decoration-none text-truncate d-block">
-                <?= $h($minisite) ?>
-            </a>
-        </div>
-        <button id="btnCopy" class="btn btn-outline-primary btn-sm flex-shrink-0"
-                onclick="copyUrl('<?= $h($minisite) ?>')">
-            <i class="bi bi-clipboard me-1"></i>Copier
-        </button>
     </div>
 
     <!-- SECTION PROFIL -->

@@ -181,3 +181,14 @@ function closeSidebar() {
     document.getElementById('sidebar')?.classList.remove('open');
     document.getElementById('sidebarOverlay')?.classList.add('d-none');
 }
+window.addEventListener("scroll", function(){
+    let navbar = document.getElementById("navbar");
+
+    if(window.scrollY > 50){
+        navbar.style.background = "white";
+        navbar.style.boxShadow = "0 10px 25px rgba(0,0,0,0.08)";
+    }else{
+        navbar.style.background = "rgba(255,255,255,0.75)";
+        navbar.style.boxShadow = "0 5px 20px rgba(0,0,0,0.05)";
+    }
+});

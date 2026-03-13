@@ -1,15 +1,11 @@
-/* ============================================================
-   PROFILSITE — FEUILLE DE STYLE PERSONNALISÉE
-   Complète Bootstrap 5 avec les styles propres au projet
-   ============================================================ */
 
 /* ---- Variables globales ---- */
 :root {
-    --ps-primary:    #6C63FF;
-    --ps-primary-d:  #5A52E0;
+    --ps-primary:    orangered;
+    --ps-primary-d:  orangered;
     --ps-accent:     #FF6584;
     --ps-light-bg:   #F4F6FF;
-    --ps-border:     rgba(108, 99, 255, 0.15);
+    --ps-border:     OrangeRed;
     --ps-radius:     14px;
     --ps-shadow:     0 8px 32px rgba(108, 99, 255, 0.12);
     --font-display:  'Syne', sans-serif;
@@ -25,12 +21,9 @@ body {
     
 }
 
-
 .font-display { font-family: var(--font-display); }
 
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
+/*ANIMATIONS*/
 .fade-up {
     opacity: 0;
     transform: translateY(24px);
@@ -41,9 +34,7 @@ body {
     transform: translateY(0);
 }
 
-/* ============================================================
-   NAVBAR
-   ============================================================ */
+/*NAVBAR */
 #navbar {
     background: rgba(255, 255, 255, 0.93);
     backdrop-filter: blur(16px);
@@ -51,16 +42,150 @@ body {
     border-bottom: 1px solid var(--ps-border);
     transition: box-shadow 0.3s;
 }
+#navbar{
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+.navbar-brand{
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+.navbar-nav .nav-link{
+    position: relative;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover{
+    color: #f54100;
+}
+.navbar-nav .nav-link::after{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #f54100;
+    left: 0;
+    bottom: -4px;
+    transition: 0.3s;
+}
+#navbar {
+    background: transparent !important;      /* pas de couleur de fond */
+    box-shadow: none !important;            /* supprime l’ombre par défaut */
+    transition: all 0.3s ease;              /* animation douce si tu scroll */
+}
+#navbar .nav-link {
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#navbar .nav-link:hover {
+    color: orangered; /* couleur au hover */
+}
+
+#navbar .btn-primary {
+    background: orangered;
+    color: white;
+}
+
+#navbar .btn-outline-primary {
+    border-color: white;
+    color: white;
+}
+
+#navbar .btn-outline-primary:hover {
+    background: orangered;
+    color: orangered;
+}
+
+.navbar-nav .nav-link:hover::after{
+    width: 100%;
+}
+.btn-primary{
+    background:#ff6363;
+    border:none;
+}
+#navbar .btn-primary {
+    border-color: orangered;       /* même couleur pour la bordure */
+    color: white;                /* texte blanc */
+    transition: all 0.3s ease;   /* animation douce au hover */
+}
+
+#navbar .btn-primary:hover {
+    background-color:  orangered;   /* couleur au hover */
+    border-color: orangered;
+}
+
+#navbar .btn-outline-primary {
+    border-color: orangered;       /* couleur bordure */
+    color: orangered;              /* couleur texte */
+}
+
+#navbar .btn-outline-primary:hover {
+    background-color: orangered;   /* fond au hover */
+    color: white;                /* texte devient blanc */
+}
+#navbar .btn {
+    padding: 12px 28px; /* vertical | horizontal */
+    font-size: 1.1rem;  /* taille du texte */
+    border-radius: 8px;  /* coins arrondis */
+}
+/* Bouton principal */
+.btn-primary {
+    background-color: orangered;  /* couleur de fond */
+    color: white;               /* texte blanc */
+    border: none;               /* supprime la bordure */
+}
+
+/* Bouton principal au survol */
+.btn-primary:hover {
+    background-color: orangered; /* couleur au hover */
+    transform: translateY(-2px); /* léger effet flottant */
+    box-shadow: 0 4px 15px rgba(108,99,255,0.3); /* ombre */
+}
+
+/* Bouton secondaire */
+.btn-outline-secondary {
+    border: 2px solid orangered;  /* couleur de la bordure */
+    color: white;              /* texte */
+    background: transparent;     /* fond transparent */
+}
+
+/* Bouton secondaire au hover */
+.btn-outline-secondary:hover {
+    background-color: orangered;   /* fond devient violet */
+    color: white;                /* texte devient blanc */
+}
+
+.btn-primary:hover{
+    background:white;
+}
+
+.btn-outline-primary{
+    border-color:orangered;
+    color:white;
+}
+
+.btn-outline-primary:hover{
+    background:orangered;
+    color:white;
+}
 #navbar.scrolled { box-shadow: var(--ps-shadow); }
 
 .navbar-brand {
     font-family: var(--font-display);
     font-size: 1.45rem;
     font-weight: 800;
-    color: #1E1B4B !important;
+    color: #ffffff !important;
 }
 .nav-link {
-    color: #6B7280 !important;
+    color: #ffffff !important;
     font-weight: 500;
     transition: color 0.2s;
 }
@@ -77,6 +202,73 @@ body {
         radial-gradient(ellipse at 15% 60%, rgba(108, 99, 255, 0.07) 0%, transparent 55%),
         radial-gradient(ellipse at 85% 20%, rgba(255, 101, 132, 0.05) 0%, transparent 50%),
         #ffffff;
+}
+.step-icon .material-icons{
+    font-size:40px;
+    color:#6C63FF;
+}
+.hero-section{
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(135deg, rgba(13,13,26,0.85), rgba(25,25,50,0.85)),
+        url("../images/Video-demo-1-scaled.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    overflow: hidden;
+}
+.hero-section::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,#6C63FF,transparent 70%);
+    top:-150px;
+    right:-150px;
+    opacity:0.4;
+    filter:blur(80px);
+}
+.hero-section .lead {
+    background: rgb(255, 255, 255);  /* fond verre semi-transparent */
+    padding: 18px 22px;                     /* espace à l'intérieur */
+    border-radius: 15px;                     /* coins arrondis */
+    backdrop-filter: blur(12px);            /* flou derrière le fond */
+    -webkit-backdrop-filter: blur(12px);    /* compat Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* contour léger */
+    box-shadow: 0 8px 25px rgba(230, 11, 11, 0.05);    /* ombre douce */
+    color: white;                          /* texte blanc */
+    transition: all 0.3s ease;              /* animation douce */
+}
+
+/* Effet au hover */
+.hero-section .lead:hover {
+    transform: translateY(-3px) scale(1.03);   /* léger déplacement et zoom */
+    box-shadow: 0 12px 30px rgb(255, 255, 255); /* ombre plus marquée */
+    background: #f7f7f7;    /* fond un peu plus visible */
+}
+.hero-section::after{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:radial-gradient(circle,#FF6584,transparent 70%);
+    bottom:-150px;
+    left:-150px;
+    opacity:0.35;
+    filter:blur(80px);
+}
+.hero-section .fs-4{
+    color:orangered !important;
+}
+
+.hero-section small{
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .hero-section h1 em {
@@ -172,100 +364,349 @@ body {
 /* ============================================================
    FONCTIONNALITÉS
    ============================================================ */
+
+/* Conteneur général */
+#fonctionnalites {
+    background: linear-gradient(135deg, #f9f9ff, #ffffff);
+    padding: 6rem 0;
+}
+
+/* Titres et sous-titres */
+#fonctionnalites .section-tag {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ps-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    border: 1px solid rgba(108,99,255,0.2);
+}
+
+#fonctionnalites h2 {
+    font-size: 2.25rem;
+    color: orangered;
+    margin-bottom: 0.5rem;
+}
+
+#fonctionnalites p.text-muted {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* Cartes fonctionnalités */
 .feature-card {
-    padding: 1.8rem;
-    border-radius: var(--ps-radius);
-    background: #fff;
-    border: 1px solid rgba(108, 99, 255, 0.1);
-    box-shadow: 0 2px 12px rgba(108, 99, 255, 0.05);
-    transition: all 0.3s ease;
+    padding: 2rem 1.5rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(108, 99, 255, 0.15);
+    box-shadow: 0 10px 20px rgba(108,99,255,0.08);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    text-align: center;
 }
+
 .feature-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(108,99,255,0.2);
     border-color: rgba(108, 99, 255, 0.3);
-    transform: translateY(-5px);
-    box-shadow: var(--ps-shadow);
+    background: rgba(255,255,255,0.95);
 }
+
+/* Icônes */
 .feature-icon {
-    font-size: 2.2rem;
-    display: block;
+    display: inline-block;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Titres des cartes */
+.feature-card h5 {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.feature-card:hover h5 {
+    color: var(--ps-primary);
+}
+
+/* Texte des cartes */
+.feature-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .feature-card {
+        padding: 1.5rem 1rem;
+    }
 }
 
 /* ============================================================
    TEMPLATES
    ============================================================ */
+
+#templates {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f9f9ff, #ffffff);
+}
+
+#templates .section-tag {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ps-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    border: 1px solid rgba(108,99,255,0.2);
+}
+
+#templates h2 {
+    font-size: 2.25rem;
+    color: orangered;
+    margin-bottom: 0.5rem;
+}
+
+#templates p.text-muted {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* Cartes Templates */
 .template-card {
-    border-radius: var(--ps-radius);
+    border-radius: 18px;
     overflow: hidden;
     border: 2px solid rgba(108, 99, 255, 0.12);
     cursor: pointer;
-    transition: all 0.3s ease;
-}
-.template-card:hover,
-.template-card.active {
-    border-color: var(--ps-primary);
-    transform: translateY(-3px);
-    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.12);
+    transition: all 0.4s ease;
+    background: #fff;
 }
 
+.template-card:hover,
+.template-card.active {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(108,99,255,0.2);
+    border-color: var(--ps-primary);
+}
+
+/* Prévisualisation */
 .tpl-preview {
-    height: 155px;
+    height: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
     padding: 1.5rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.tpl-dot  { width: 40px; height: 40px; border-radius: 50%; }
-.tpl-line { height: 8px; border-radius: 4px; width: 100%; }
 
+.template-card:hover .tpl-preview {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(108,99,255,0.15);
+}
+
+/* Points et lignes */
+.tpl-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.template-card:hover .tpl-dot {
+    transform: scale(1.2) rotate(15deg);
+}
+
+.tpl-line {
+    height: 8px;
+    border-radius: 4px;
+    width: 100%;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.template-card:hover .tpl-line {
+    transform: scaleX(1.05);
+}
+
+/* Pied de carte */
 .template-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.6rem 1rem;
     background: #fff;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(108,99,255,0.08);
+    transition: background 0.3s ease;
+}
+
+.template-card:hover .template-footer {
+    background: rgba(108, 99, 255, 0.03);
 }
 
 /* ============================================================
-   ÉTAPES
+   SECTION COMMENT ÇA MARCHE — Effets et styles
    ============================================================ */
-.step-card {
-    padding: 2rem 1.5rem;
-    border-radius: var(--ps-radius);
+#comment {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(108,99,255,0.05));
+    position: relative;
+    overflow: hidden;
+}
+
+#comment .step-card {
     background: #fff;
-    border: 1px solid rgba(108, 99, 255, 0.1);
-    box-shadow: 0 2px 12px rgba(108, 99, 255, 0.05);
-    transition: transform 0.3s;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(108,99,255,0.1);
+    box-shadow: 0 6px 18px rgba(108,99,255,0.08);
+    transition: all 0.4s ease;
     text-align: center;
 }
-.step-card:hover { transform: translateY(-4px); }
 
-.step-number {
+#comment .step-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(108,99,255,0.15);
+    border-color: rgba(108,99,255,0.3);
+}
+
+#comment .step-number {
     font-family: var(--font-display);
-    font-size: 2.8rem;
+    font-size: 3rem;
     font-weight: 800;
     color: var(--ps-primary);
-    opacity: 0.2;
-    line-height: 1;
-    margin-bottom: 0.4rem;
+    opacity: 0.15;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
 }
-.step-icon {
-    font-size: 2rem;
+
+#comment .step-card:hover .step-number {
+    opacity: 0.3;
+}
+
+#comment .step-icon {
+    font-size: 2.5rem;
     display: block;
     margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+#comment .step-card:hover .step-icon {
+    transform: rotate(-10deg) scale(1.2);
+}
+
+#comment h5 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+#comment p {
+    font-size: 0.875rem;
+    color: #6c6c6c;
+}
+
+#comment .bi-arrow-right {
+    font-size: 2rem;
+    color: rgba(108,99,255,0.3);
+    transition: all 0.3s ease;
+}
+
+#comment .bi-arrow-right:hover {
+    color: var(--ps-primary);
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    #comment .col-md-1 {
+        display: none !important;
+    }
 }
 
 /* ============================================================
-   CONTACT
+   SECTION CONTACT — Effets glass et modernisation
    ============================================================ */
-.contact-card {
-    background: #fff;
-    border-radius: var(--ps-radius);
-    border: 1px solid var(--ps-border);
-    box-shadow: var(--ps-shadow);
+#contact {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(108,99,255,0.03), rgba(255,101,132,0.03));
+}
+
+#contact .contact-card {
+    background: rgba(255, 255, 255, 0.12);   /* effet glass */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(108,99,255,0.08);
+    padding: 2.5rem;
+    transition: all 0.4s ease;
+}
+
+#contact .contact-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(108,99,255,0.15);
+    border-color: rgba(108,99,255,0.3);
+}
+
+#contact .form-control,
+#contact .form-select,
+#contact textarea {
+    border-radius: 10px;
+    border: 1px solid rgba(108,99,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+#contact .form-control::placeholder,
+#contact textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+#contact .form-control:focus,
+#contact textarea:focus {
+    border-color: var(--ps-primary);
+    box-shadow: 0 0 0 3px rgba(108,99,255,0.12);
+    background: rgba(255,255,255,0.15);
+    color: black;
+}
+
+#contact label.form-label {
+    color: rgba(246, 3, 3, 0.9);
+}
+
+#contact .btn-primary {
+    background: var(--ps-primary);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 12px 0;
+    transition: all 0.3s ease;
+}
+
+#contact .btn-primary:hover {
+    background: var(--ps-primary-d);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(108,99,255,0.3);
+}
+
+@media (max-width: 767.98px) {
+    #contact .contact-card { padding: 2rem 1.5rem; }
 }
 
 /* ============================================================
@@ -364,6 +805,12 @@ body {
 .sidebar-link.active {
     background: rgba(108, 99, 255, 0.07);
     color: var(--ps-primary);
+}
+.login-section{
+    background-image: url("../frontend/images/");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .sidebar-avatar {

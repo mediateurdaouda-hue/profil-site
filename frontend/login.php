@@ -67,6 +67,12 @@ if (!isset($erreur)) $erreur = '';
                     </button>
                 </div>
             </div>
+            <div class="text-center mb-3">
+    <a href="<?= APP_URL ?>/backend/auth/forgot-password.php" 
+       class="text-primary small text-decoration-none">
+        Mot de passe oublié ?
+    </a>
+</div>
 
             <button type="submit" class="btn btn-primary w-100 py-2 fw-medium">
                 Se connecter <i class="bi bi-arrow-right ms-1"></i>

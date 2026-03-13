@@ -111,6 +111,17 @@ if ($action === 'projet') {
     }
 }
 
+// ------ Choix de l'extension de domaine ------
+if ($action === 'extension') {
+    $extensionsValides = ['.com', '.bf', '.net', '.org'];
+    $ext = $_POST['extension'] ?? '.com';
+    if (in_array($ext, $extensionsValides)) {
+        $_SESSION['extension'] = $ext;
+    }
+    header('Location: ' . APP_URL . '/backend/dashboard.php');
+    exit;
+}
+
 // ------ Suppression d'un projet ------
 if (isset($_GET['suppr']) && is_numeric($_GET['suppr'])) {
     $db->prepare('DELETE FROM projects WHERE id = ? AND user_id = ?')
@@ -125,3 +136,4 @@ $bienvenue     = isset($_GET['welcome']);
 
 // Inclure la vue du dashboard
 include __DIR__ . '/../frontend/dashboard.php';
+

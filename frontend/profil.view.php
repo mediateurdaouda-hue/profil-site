@@ -27,7 +27,7 @@ $nomCourt = strtoupper(explode(' ', $nom)[0]);
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="<?= APP_URL ?>/frontend/css/profil.css"/>
 </head>
 <body>
@@ -40,13 +40,13 @@ $nomCourt = strtoupper(explode(' ', $nom)[0]);
         <?= $h($nomCourt) ?><span class="nav-logo-dot">.</span>
     </a>
     <ul class="nav-menu">
-        <li><a href="#home"  class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#home"  class="nav-link active">Accueil</a></li>
+        <li><a href="#about" class="nav-link">APROPOS</a></li>
         <?php if ($competences): ?>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#skills" class="nav-link">Compétences</a></li>
         <?php endif; ?>
         <?php if ($projets): ?>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#projects" class="nav-link">Projets</a></li>
         <?php endif; ?>
         <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
@@ -62,12 +62,12 @@ $nomCourt = strtoupper(explode(' ', $nom)[0]);
             <!-- Texte gauche -->
             <div class="col-lg-6 hero-text-col">
 
-                <p class="hero-hello">Hello !</p>
+                <p class="hero-hello">Salut !</p>
 
                 <h1 class="hero-heading">
-                    I'm a <span class="accent"><?= $h($titre) ?></span>
+                    Je suis <span class="accent"><?= $h($titre) ?></span>
                     <?php if ($ville): ?>
-                        <br/>based in <span class="accent"><?= $h($ville) ?></span>
+                        <br/>basé à <span class="accent"><?= $h($ville) ?></span>
                     <?php endif; ?>
                 </h1>
 
@@ -76,12 +76,10 @@ $nomCourt = strtoupper(explode(' ', $nom)[0]);
                 <?php endif; ?>
 
                 <div class="hero-btns">
-                    <a href="#contact" class="btn-hire">
-                        Hire Me <i class="bi bi-arrow-right-circle"></i>
-                    </a>
+    
                     <?php if ($projets): ?>
                         <a href="#projects" class="btn-outline-port">
-                            My Works <i class="bi bi-grid-3x3-gap"></i>
+                            Mon travail <i class="bi bi-grid-3x3-gap"></i>
                         </a>
                     <?php endif; ?>
                 </div>
@@ -141,9 +139,7 @@ $nomCourt = strtoupper(explode(' ', $nom)[0]);
 
 <hr class="section-sep"/>
 
-<!-- ==============================
-     ABOUT
-     ============================== -->
+<!-- ABOUT -->
 <section class="port-section" id="about">
     <div class="container">
         <div class="row align-items-center g-5">
@@ -219,9 +215,7 @@ $nomCourt = strtoupper(explode(' ', $nom)[0]);
 
 <hr class="section-sep"/>
 
-<!-- ==============================
-     SKILLS
-     ============================== -->
+<!-- SKILLS-->
 <?php if ($competences): ?>
     <section class="port-section" id="skills">
         <div class="container">
@@ -239,9 +233,7 @@ $nomCourt = strtoupper(explode(' ', $nom)[0]);
     <hr class="section-sep"/>
 <?php endif; ?>
 
-<!-- ==============================
-     PROJECTS
-     ============================== -->
+<!-- PROJETS-->
 <?php if ($projets): ?>
     <section class="port-section" id="projects">
         <div class="container">
@@ -277,15 +269,13 @@ $nomCourt = strtoupper(explode(' ', $nom)[0]);
     <hr class="section-sep"/>
 <?php endif; ?>
 
-<!-- ==============================
-     CONTACT
-     ============================== -->
+<!-- CONTACT -->
 <section class="port-section" id="contact">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="contact-card reveal">
-                    <p class="section-tag justify-content-center">Contact</p>
+                    <p class="section-tag justify-content-center">Contacts</p>
                     <h2 class="section-title">Travaillons <span class="accent">ensemble !</span></h2>
                     <p class="contact-sub">
                         Vous avez un projet en tête ? Contactez-moi et discutons-en !
@@ -310,9 +300,7 @@ $nomCourt = strtoupper(explode(' ', $nom)[0]);
     </div>
 </section>
 
-<!-- ==============================
-     FOOTER
-     ============================== -->
+<!--FOOTER-->
 <footer class="port-footer">
     <div class="container">
         <p class="mb-1">© <?= date('Y') ?> — <strong><?= $h($nom) ?></strong></p>
