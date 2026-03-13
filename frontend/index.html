@@ -13,14 +13,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Styles personnalisés -->
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const card = document.querySelector('.auth-card');
 
-<!-- ============================================================
-     BARRE DE NAVIGATION
-     ============================================================ -->
+</script>
+<!--BARRE DE NAVIGATION -->
 <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
     <div class="container">
 
@@ -58,9 +61,7 @@
     </div>
 </nav>
 
-<!-- ============================================================
-     SECTION HÉRO
-     ============================================================ -->
+<!--SECTION HÉRO-->
 <section class="hero-section d-flex align-items-center" id="accueil">
     <div class="container">
         <div class="row align-items-center g-5">
@@ -71,11 +72,10 @@
                 <h1 class="display-4 fw-bold font-display mb-4 lh-sm">
                     VOTRE <em>MINI-SITE</em><br/>PERSONNEL EN QUELQUES MINUTES 
                 </h1>
-
                 <p class="lead text-muted mb-4" style="max-width:480px;">
                     DECLANCHEZ,VOTRE TRANSFORMATION DIGITALE AVEC PROFILSITE.
                 </p>
-
+               <br> <br>
                 <div class="d-flex gap-3 flex-wrap mb-5">
                     <a href="register.php" class="btn btn-primary btn-lg px-4 shadow-sm">
                         Créer mon profil <i class="bi bi-arrow-right ms-2"></i>
@@ -91,40 +91,11 @@
                 </div>
             </div>
 
-            <!-- Maquette animée droite -->
-            <div class="col-lg-6 d-none d-lg-flex justify-content-center">
-                <div class="mockup-card">
-                    <!-- Barre du navigateur -->
-                    <div class="mockup-topbar">
-                        <span class="dot dot-red"></span>
-                        <span class="dot dot-yellow"></span>
-                        <span class="dot dot-green"></span>
-                        <span class="mockup-url">profilsite.com/votre_nom</span>
-                    </div>
-                    <!-- Contenu simulé du profil -->
-                    <div class="p-4 text-center">
-                        <div class="mockup-avatar mb-3"></div>
-                        <div class="fw-bold font-display mb-1">Votre Nom</div>
-                        <div class="text-muted small mb-3">Développeur Full Stack</div>
-                        <div class="d-flex gap-1 justify-content-center flex-wrap mb-4">
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 fw-normal">PHP</span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 fw-normal">MySQL</span>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 fw-normal">JS</span>
-                        </div>
-                        <div class="mockup-bar mb-2"></div>
-                        <div class="mockup-bar mb-2 opacity-75"></div>
-                        <div class="mockup-bar opacity-50"></div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
 
-<!-- ============================================================
-     SECTION FONCTIONNALITÉS
-     ============================================================ -->
+<!--SECTION FONCTIONNALITÉS-->
 <section class="py-section" id="fonctionnalites">
     <div class="container">
 
@@ -178,9 +149,7 @@
     </div>
 </section>
 
-<!-- ============================================================
-     SECTION TEMPLATES
-     ============================================================ -->
+<!--SECTION TEMPLATES-->
 <section class="py-section bg-light-ps" id="templates">
     <div class="container">
 
@@ -251,14 +220,12 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
-<!-- ============================================================
-     SECTION COMMENT ÇA MARCHE
-     ============================================================ -->
+<!-- 
+SECTION COMMENT ÇA MARCHE-->
 <section class="py-section" id="comment">
     <div class="container">
 

@@ -38,6 +38,12 @@ $projets = $stmt->fetchAll();
 
 $action = $_POST['action'] ?? '';
 
+if ($action === 'layout') {
+    error_log("USER_ID SESSION: " . ($_SESSION['user_id'] ?? 'VIDE'));
+    error_log("USER_ID VAR: " . $userId);
+}
+
+
 // ------ Mise à jour du profil ------
 if ($action === 'profil') {
 
@@ -109,6 +115,37 @@ if ($action === 'projet') {
         $stmt->execute([$userId]);
         $projets = $stmt->fetchAll();
     }
+}
+
+// ------ Layout disposition ------
+if ($action === 'layout') {
+    $photoPosition  = in_array($_POST['photo_position'] ?? '', ['left','right'])
+                      ? $_POST['photo_position'] : 'right';
+    $sectionsRaw    = $_POST['sections_order'] ?? 'about,skills,projects,contact';
+    $allowed = ['nom_titre','bio','competences','projets','contact','reseaux'];
+    $sectionsOrder  = array_filter(
+        array_map('trim', explode(',', $sectionsRaw)),
+        fn($s) => in_array($s, $allowed)
+    );
+    // Ajouter les manquantes
+    foreach ($allowed as $s) {
+        if (!in_array($s, $sectionsOrder)) $sectionsOrder[] = $s;
+    }
+    $layout = json_encode([
+        'photo_position'  => $photoPosition,
+        'sections_order'  => array_values($sectionsOrder),
+    ]);
+    $db = getDB();
+    $stmt = $db->prepare('UPDATE profiles SET layout = ? WHERE user_id = ?');
+    $stmt->execute([$layout, $userId]);
+
+    $_SESSION['succes'] = 'Disposition enregistrée !';
+    if (($_POST['redirect'] ?? '') === 'personnaliser') {
+        header('Location: ' . APP_URL . '/frontend/personnaliser.php');
+    } else {
+        header('Location: ' . APP_URL . '/backend/dashboard.php?section=disposition');
+    }
+    exit;
 }
 
 // ------ Choix de l'extension de domaine ------

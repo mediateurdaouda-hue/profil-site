@@ -80,4 +80,30 @@ $h = fn($s) => htmlspecialchars((string)($s ?? ''), ENT_QUOTES, 'UTF-8');
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const card = document.querySelector('.auth-card');
+    if (!card) return;
+
+    // Animation entrée
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(40px)';
+    card.style.transition = 'all 0.6s ease';
+
+    setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+    }, 100);
+
+    // Bordure lumineuse au survol
+    card.addEventListener('mouseenter', () => {
+        card.style.boxShadow = '0 30px 70px rgba(0,0,0,0.5), 0 0 30px rgba(255,100,30,0.5)';
+        card.style.borderColor = 'rgba(255,100,30,0.8)';
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.boxShadow = '0 25px 60px rgba(0,0,0,0.4), 0 0 20px rgb(255, 255, 255)';
+        card.style.borderColor = 'rgba(255,100,30,0.5)';
+    });
+});
+</script>
 </html>

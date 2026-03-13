@@ -48,14 +48,10 @@ if (!isset($erreur)) $erreur = '';
                     </span>
                     <input type="text" name="username" class="form-control"
                            id="usernameInput"
-                           placeholder="jean_dupont" required maxlength="30"
+                           placeholder="Daouda Sawadogo" required maxlength="30"
                            value="<?= htmlspecialchars($_POST['username'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
                            pattern="[a-zA-Z0-9_]{3,30}"/>
                 </div>
-                <div class="form-text">
-                    Votre URL : profilsite.com/<strong id="urlPreview">votre_nom</strong>
-                </div>
-            </div>
 
             <!-- Email -->
             <div class="mb-3">
@@ -65,7 +61,7 @@ if (!isset($erreur)) $erreur = '';
                         <i class="bi bi-envelope text-muted"></i>
                     </span>
                     <input type="email" name="email" class="form-control"
-                           placeholder="jean@exemple.com" required
+                           placeholder="mediateurdaouda@gmail.com" required
                            value="<?= htmlspecialchars($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8') ?>"/>
                 </div>
             </div>
@@ -122,9 +118,31 @@ if (!isset($erreur)) $erreur = '';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= APP_URL ?>/frontend/js/main.js"></script>
 <script>
-    document.getElementById('usernameInput').addEventListener('input', function () {
-        document.getElementById('urlPreview').textContent = this.value || 'votre_nom';
+    
+document.addEventListener('DOMContentLoaded', function() {
+    const card = document.querySelector('.auth-card');
+    if (!card) return;
+
+    // Animation entrée
+    card.style.opacity = '2';
+    card.style.transform = 'translateY(50px)';
+    card.style.transition = 'all 0.6s ease';
+
+    setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+    }, 100);
+
+    // Bordure lumineuse au survol
+    card.addEventListener('mouseenter', () => {
+        card.style.boxShadow = '0 30px 70px rgba(0,0,0,0.5), 0 0 30px rgba(255,100,30,0.5)';
+        card.style.borderColor = 'OrangeRed';
     });
+    card.addEventListener('mouseleave', () => {
+        card.style.boxShadow = '0 25px 60px rgba(4,4,4,4.4), 0 0 20px rgb(255, 255, 255)';
+        card.style.borderColor = 'OrangeRed';
+    });
+});
 </script>
 </body>
 </html>

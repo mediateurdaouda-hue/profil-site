@@ -191,4 +191,21 @@ window.addEventListener("scroll", function(){
         navbar.style.background = "rgba(255,255,255,0.75)";
         navbar.style.boxShadow = "0 5px 20px rgba(0,0,0,0.05)";
     }
+    // Masquer/afficher navbar au scroll
+let lastScroll = 0;
+window.addEventListener('scroll', function() {
+    const currentScroll = window.scrollY;
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+
+    if (currentScroll > lastScroll && currentScroll > 100) {
+        // Scroll vers le bas — cacher
+        navbar.style.transform = 'translateY(-100%)';
+        navbar.style.transition = 'transform 0.3s ease';
+    } else {
+        // Scroll vers le haut — afficher
+        navbar.style.transform = 'translateY(0)';
+    }
+    lastScroll = currentScroll;
+});
 });

@@ -65,6 +65,17 @@ $h = fn($s) => htmlspecialchars((string)($s ?? ''), ENT_QUOTES, 'UTF-8');
                     <span class="badge bg-primary bg-opacity-10 text-primary ms-auto"><?= count($projets) ?></span>
                 </a>
             </li>
+            <li>
+                <a href="#" class="sidebar-link <?= $sectionActive === 'disposition' ? 'active' : '' ?>"
+                   onclick="showSection('disposition', this); return false;">
+                    <i class="bi bi-layout-wtf"></i> Disposition
+                </a>
+            </li>
+            <li>
+                <a href="<?= APP_URL ?>/backend/personnaliser.php" class="sidebar-link">
+                    <i class="bi bi-layout-wtf text-primary"></i> Personnaliser mon site
+                </a>
+            </li>
             <li class="mt-2 pt-2 border-top">
                 <a href="<?= $h($minisite) ?>" target="_blank" class="sidebar-link">
                     <i class="bi bi-box-arrow-up-right"></i> Voir mon site
@@ -295,6 +306,86 @@ $h = fn($s) => htmlspecialchars((string)($s ?? ''), ENT_QUOTES, 'UTF-8');
         </div>
     </div>
 
+    <!-- SECTION DISPOSITION -->
+    <div id="section-disposition" class="dash-section <?= $sectionActive !== 'disposition' ? 'd-none' : '' ?>">
+        <?php
+        $layout = json_decode($user['layout'] ?? 'null', true) ?? [
+            'photo_position'    => 'right',
+            'sections_order'    => ['about', 'skills', 'projects', 'contact']
+        ];
+        ?>
+        <div class="panel">
+            <h5 class="fw-bold font-display mb-4 pb-3 border-bottom d-flex align-items-center gap-2">
+                <i class="bi bi-layout-wtf text-primary"></i> Disposition du mini-site
+            </h5>
+
+            <form method="POST" action="<?= APP_URL ?>/backend/dashboard.php">
+                <input type="hidden" name="action" value="layout"/>
+
+                <!-- Photo position -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">📸 Position de la photo</label>
+                    <div class="d-flex gap-3">
+                        <div class="layout-card <?= ($layout['photo_position'] ?? 'right') === 'left' ? 'selected' : '' ?>"
+                             onclick="selectLayout(this, 'photo_position', 'left')">
+                            <input type="radio" name="photo_position" value="left" class="d-none"
+                                   <?= ($layout['photo_position'] ?? 'right') === 'left' ? 'checked' : '' ?>>
+                            <div class="layout-preview">
+                                <div class="lp-photo left"></div>
+                                <div class="lp-text"></div>
+                            </div>
+                            <div class="text-center small mt-2 fw-medium">Photo à gauche</div>
+                        </div>
+                        <div class="layout-card <?= ($layout['photo_position'] ?? 'right') === 'right' ? 'selected' : '' ?>"
+                             onclick="selectLayout(this, 'photo_position', 'right')">
+                            <input type="radio" name="photo_position" value="right" class="d-none"
+                                   <?= ($layout['photo_position'] ?? 'right') === 'right' ? 'checked' : '' ?>>
+                            <div class="layout-preview">
+                                <div class="lp-text"></div>
+                                <div class="lp-photo right"></div>
+                            </div>
+                            <div class="text-center small mt-2 fw-medium">Photo à droite</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ordre des sections -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">🔀 Ordre des sections</label>
+                    <p class="text-muted small mb-3">Glissez-déposez pour réorganiser.</p>
+                    <div id="sortable-sections" class="d-flex flex-column gap-2">
+                        <?php
+                        $sectionsLabels = [
+                            'about'    => ['icon' => 'bi-person-lines-fill', 'label' => 'À propos'],
+                            'skills'   => ['icon' => 'bi-tools',             'label' => 'Compétences'],
+                            'projects' => ['icon' => 'bi-folder2-open',      'label' => 'Projets'],
+                            'contact'  => ['icon' => 'bi-envelope',          'label' => 'Contact'],
+                        ];
+                        $order = $layout['sections_order'] ?? array_keys($sectionsLabels);
+                        foreach ($order as $sec):
+                            if (!isset($sectionsLabels[$sec])) continue;
+                            $info = $sectionsLabels[$sec];
+                        ?>
+                        <div class="section-drag-item d-flex align-items-center gap-3 p-3 bg-light rounded-3 border"
+                             data-section="<?= $sec ?>">
+                            <i class="bi bi-grip-vertical text-muted fs-5" style="cursor:grab;"></i>
+                            <i class="bi <?= $info['icon'] ?> text-primary"></i>
+                            <span class="fw-medium"><?= $info['label'] ?></span>
+                            <i class="bi bi-arrows-move text-muted ms-auto small"></i>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <input type="hidden" name="sections_order" id="sectionsOrderInput"
+                           value="<?= $h(implode(',', $order)) ?>"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary px-4 py-2 fw-semibold">
+                    <i class="bi bi-check-lg me-1"></i> Enregistrer la disposition
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- SECTION PROJETS -->
     <div id="section-projets" class="dash-section <?= $sectionActive !== 'projets' ? 'd-none' : '' ?>">
         <div class="panel">
@@ -364,15 +455,83 @@ $h = fn($s) => htmlspecialchars((string)($s ?? ''), ENT_QUOTES, 'UTF-8');
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
 <script src="<?= APP_URL ?>/frontend/js/main.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const section = '<?= $h($sectionActive) ?>';
-        if (section === 'projets') {
-            document.querySelectorAll('.sidebar-link')[1]?.classList.add('active');
-            document.querySelectorAll('.sidebar-link')[0]?.classList.remove('active');
-        }
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    // --- Drag & drop sections ---
+    const sortable = document.getElementById('sortable-sections');
+    if (sortable) {
+        Sortable.create(sortable, {
+            animation: 150,
+            handle: '.bi-grip-vertical',
+            ghostClass: 'bg-primary',
+            onEnd: function () {
+                const items = sortable.querySelectorAll('.section-drag-item');
+                const order = Array.from(items).map(i => i.dataset.section);
+                document.getElementById('sectionsOrderInput').value = order.join(',');
+            }
+        });
+    }
+
+    // --- Sélection layout carte ---
+    window.selectLayout = function(card, name, value) {
+        // Déselectionner toutes les cartes du même groupe
+        card.closest('.d-flex').querySelectorAll('.layout-card').forEach(c => {
+            c.classList.remove('selected');
+            c.querySelector('input[type=radio]').removeAttribute('checked');
+        });
+        card.classList.add('selected');
+        const radio = card.querySelector('input[type=radio]');
+        radio.checked = true;
+        radio.setAttribute('checked', 'checked');
+    };
+});
 </script>
+
+<style>
+/* Layout cards */
+.layout-card {
+    flex: 1;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all .2s;
+    background: #f9fafb;
+}
+.layout-card:hover  { border-color: var(--bs-primary); background: #fff; }
+.layout-card.selected { border-color: var(--bs-primary); background: #fff;
+                         box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb),.15); }
+.layout-preview {
+    display: flex;
+    gap: 8px;
+    height: 60px;
+    align-items: center;
+}
+.lp-photo {
+    width: 40px; height: 50px;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+.lp-text {
+    flex: 1;
+    display: flex; flex-direction: column; gap: 6px;
+}
+.lp-text::before, .lp-text::after {
+    content: '';
+    display: block;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+}
+.lp-text::after { width: 70%; }
+
+/* Drag items */
+.section-drag-item { transition: background .15s; }
+.section-drag-item:hover { background: #f0f4ff !important; border-color: #6366f1 !important; }
+.sortable-ghost { opacity: .4; background: #e0e7ff !important; }
+</style>
 </body>
 </html>

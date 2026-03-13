@@ -1,8 +1,6 @@
 <?php
-// ============================================================
 //  PROFILSITE — CONFIGURATION GÉNÉRALE
 //  Inclure ce fichier en premier dans tous les scripts PHP
-// ============================================================
 
 // --- Paramètres de connexion à la base de données ---
 define('DB_HOST',    'localhost');
@@ -22,9 +20,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// ============================================================
 //  CONNEXION PDO (singleton — une seule instance)
-// ============================================================
 function getDB(): PDO
 {
     static $pdo = null;
@@ -61,9 +57,7 @@ function getDB(): PDO
     return $pdo;
 }
 
-// ============================================================
 //  FONCTIONS UTILITAIRES
-// ============================================================
 
 /** Vérifie si un utilisateur est connecté */
 function isLoggedIn(): bool

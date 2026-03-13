@@ -1,7 +1,5 @@
 <?php
-// ============================================================
 //  BACKEND — TRAITEMENT DE L'INSCRIPTION
-// ============================================================
 
 require_once __DIR__ . '/../config.php';
 redirectIfLoggedIn(); // Si déjà connecté → dashboard

@@ -30,7 +30,6 @@ if (!isset($erreur)) $erreur = '';
             <p class="text-muted small mt-1 mb-0">Bon retour 👋</p>
         </div>
 
-        <!-- Alerte erreur -->
         <?php if ($erreur): ?>
             <div class="alert alert-danger d-flex align-items-center gap-2 py-2 small mb-4" role="alert">
                 <i class="bi bi-exclamation-circle-fill flex-shrink-0"></i>
@@ -38,7 +37,6 @@ if (!isset($erreur)) $erreur = '';
             </div>
         <?php endif; ?>
 
-        <!-- Formulaire -->
         <form method="POST" action="<?= APP_URL ?>/backend/auth/login.php" novalidate>
 
             <div class="mb-3">
@@ -67,12 +65,13 @@ if (!isset($erreur)) $erreur = '';
                     </button>
                 </div>
             </div>
+
             <div class="text-center mb-3">
-    <a href="<?= APP_URL ?>/backend/auth/forgot-password.php" 
-       class="text-primary small text-decoration-none">
-        Mot de passe oublié ?
-    </a>
-</div>
+                <a href="<?= APP_URL ?>/backend/auth/forgot-password.php"
+                   class="text-primary small text-decoration-none">
+                    Mot de passe oublié ?
+                </a>
+            </div>
 
             <button type="submit" class="btn btn-primary w-100 py-2 fw-medium">
                 Se connecter <i class="bi bi-arrow-right ms-1"></i>
@@ -93,5 +92,31 @@ if (!isset($erreur)) $erreur = '';
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= APP_URL ?>/frontend/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const card = document.querySelector('.auth-card');
+    if (!card) return;
+
+    // Animation entrée
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(40px)';
+    card.style.transition = 'all 0.6s ease';
+
+    setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+    }, 100);
+
+    // Bordure lumineuse au survol
+    card.addEventListener('mouseenter', () => {
+        card.style.boxShadow = '0 30px 70px rgba(0,0,0,0.5), 0 0 30px rgba(255,100,30,0.5)';
+        card.style.borderColor = 'rgba(255,100,30,0.8)';
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.boxShadow = '0 25px 60px rgba(0,0,0,0.4), 0 0 20px rgb(255, 255, 255)';
+        card.style.borderColor = 'rgba(255,100,30,0.5)';
+    });
+});
+</script>
 </body>
 </html>

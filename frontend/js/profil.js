@@ -1,12 +1,8 @@
-/* ============================================================
-   profil.js — Scripts du mini-site portfolio
-   ============================================================ */
+/*profil.js — Scripts du mini-site portfolio*/
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    /* ==============================
-       SCROLL REVEAL
-       ============================== */
+    /*SCROLL REVEAL*/
     const revealObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -20,9 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         revealObserver.observe(el);
     });
 
-    /* ==============================
-       NAVBAR — Ombre au scroll
-       ============================== */
+    /*NAVBAR — Ombre au scroll*/
     var navbar = document.getElementById('navbar');
 
     window.addEventListener('scroll', function () {
@@ -33,9 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }, { passive: true });
 
-    /* ==============================
-       NAVBAR — Lien actif au scroll
-       ============================== */
+    /*NAVBAR — Lien actif au scroll*/
     var sections = document.querySelectorAll('section[id]');
     var navLinks = document.querySelectorAll('.nav-menu .nav-link');
 

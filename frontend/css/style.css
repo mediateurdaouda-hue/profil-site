@@ -1,4 +1,4 @@
-
+/*@import url('https://fonts.googleapis.com/css2?family=Island+Moments&family=Kaushan+Script&family=Poppins:wght@500&display=swap');*/
 /* ---- Variables globales ---- */
 :root {
     --ps-primary:    orangered;
@@ -9,18 +9,14 @@
     --ps-radius:     14px;
     --ps-shadow:     0 8px 32px rgba(108, 99, 255, 0.12);
     --font-display:  'Syne', sans-serif;
-    --font-body:     'DM Sans', sans-serif;
+    --font-body:     
 }
-
-body {
-    font-family: var(--font-body);
+body { 
     color: #ff5100;
-     font-family: 'DM Sans', sans-serif;
      /* Taille globale du texte */
     font-size: 25px; /* valeur par défaut 16px → 18px plus grand */
-    
+    font-family: 'Poppins', sans-serif;  
 }
-
 .font-display { font-family: var(--font-display); }
 
 /*ANIMATIONS*/
@@ -32,6 +28,10 @@ body {
 .fade-up.visible {
     opacity: 1;
     transform: translateY(0);
+}
+.auth-card .form-text {
+    color: #ffffff !important;
+    font-weight: 500;
 }
 
 /*NAVBAR */
@@ -191,9 +191,7 @@ body {
 }
 .nav-link:hover { color: var(--ps-primary) !important; }
 
-/* ============================================================
-   SECTION HÉRO
-   ============================================================ */
+/* SECTION HÉRO */
 .hero-section {
     min-height: 100vh;
     padding-top: 6rem;
@@ -212,10 +210,13 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-
     background:
-        linear-gradient(135deg, rgba(13,13,26,0.85), rgba(25,25,50,0.85)),
-        url("../images/Video-demo-1-scaled.jpg");
+linear-gradient(to bottom, rgba(255,165,0,0), rgb(255, 60, 0)),
+url("../images/Dao2.jpg");
+
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 
     background-size: cover;
     background-position: center;
@@ -342,9 +343,7 @@ body {
     background: #EEF2FF;
 }
 
-/* ============================================================
-   SECTIONS COMMUNES
-   ============================================================ */
+/* SECTIONS COMMUNES */
 .py-section    { padding: 5rem 0; }
 .bg-light-ps   { background: var(--ps-light-bg); }
 
@@ -747,8 +746,8 @@ body {
 .auth-body {
     min-height: 100vh;
     background:
-        radial-gradient(ellipse at 20% 50%, rgba(108, 99, 255, 0.07) 0%, transparent 50%),
-        var(--ps-light-bg);
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url('../images/dig-1160x770.jpg') center center / cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -756,14 +755,6 @@ body {
 }
 
 .auth-wrapper { width: 100%; max-width: 440px; }
-
-.auth-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 2.5rem;
-    border: 1px solid var(--ps-border);
-    box-shadow: var(--ps-shadow);
-}
 
 /* ============================================================
    DASHBOARD — BARRE LATÉRALE
@@ -1009,4 +1000,15 @@ body {
     .auth-card { padding: 1.75rem 1.25rem; }
     .panel     { padding: 1.25rem; }
     .hero-section h1 { font-size: 2.2rem; }
+}
+.auth-card,
+.auth-card p,
+.auth-card small,
+.auth-card label,
+.auth-card .text-muted {
+    color: #ffffff !important;
+}
+
+.auth-card .text-primary {
+    color: #e85d04 !important;
 }
